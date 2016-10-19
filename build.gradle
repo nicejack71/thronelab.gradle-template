@@ -29,7 +29,7 @@ contacts {
     'rene.neubert71@gmail.com' {
         roles 'owner'
         moniker 'Rene Neubert'
-        github github.user
+        github 'iThroneLab'
     }
 }
 
