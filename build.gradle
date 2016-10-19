@@ -21,38 +21,19 @@ plugins {
 
 group = 'com.thronelab'
 description = 'Template for the thronelab projects.'
-
+github {
+    user 'iThroneLab'
+    license 'Apache'
+}
 contacts {
     'rene.neubert71@gmail.com' {
         roles 'owner'
         moniker 'Rene Neubert'
-        github 'iThroneLab'
+        github github.user
     }
 }
-github {
-    user 'iThroneLab'
-    license 'Apache'
-    //repository 'template' // only if different to project name
-}
 
-task(hello) << {
-    println github.repository
-    println github.user
-    println github.license
-    println github.licenseName
-    println github.licenseUrl
-    println github.repositoryUrl
-    println github.issues
-    println github.site
-    println github.vcsUrl
-    println github.scmConnection
-    println github.changelogFile
-}
-
-
-
-
-
+//only for example
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.21'

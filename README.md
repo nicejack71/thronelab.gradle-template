@@ -11,19 +11,18 @@ A template for java projects with gradle.
 Example setup build.gradle file:
 
 ```groovy
-group = 'mygroupid'
-description = 'Template for java gradle projects.'
 
-contacts {
-    'myEmail' {
-        roles 'owner'
-        moniker 'developer'
-        github 'mygithub'
-    }
-}
+group = 'com.thronelab'
+description = 'Template for the thronelab projects.'
 github {
-    user 'mygithub'
+    user 'the_github_user'
     license 'Apache'
-    repository 'template' // only if different to project name
+}
+contacts {
+    'yourEmail' {
+        roles 'owner' 
+        moniker 'yourName'
+        github github.user
+    }
 }
 ```
