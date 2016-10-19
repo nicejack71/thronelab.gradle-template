@@ -1,0 +1,132 @@
+plugins {
+    id 'java'
+    id 'jacoco'
+    id 'maven-publish'
+    id 'idea'
+    id 'maven'
+    id 'signing'
+    id 'nebula.nebula-release' version '4.0.1'
+    id 'findbugs'
+    id 'nebula.nebula-bintray-publishing' version '3.5.2'
+    id 'nebula.maven-scm' version '4.9.1'
+    id 'nebula.maven-publish' version '4.9.1'
+    id 'nebula.javadoc-jar' version '4.9.1'
+    id 'nebula.source-jar' version '4.9.1'
+    id 'nebula.maven-apache-license' version '4.9.1'
+    id 'nebula.info-scm' version '3.3.3'
+    id 'nebula.contacts' version '3.0.1'
+    id 'ru.vyarus.github-info' version '1.1.0'
+
+}
+
+group = 'com.thronelab'
+description = 'Template for the thronelab projects.'
+
+contacts {
+    'rene.neubert71@gmail.com' {
+        roles 'owner'
+        moniker 'Rene Neubert'
+        github 'iThroneLab'
+    }
+}
+github {
+    user 'iThroneLab'
+    license 'Apache'
+    //repository 'template' // only if different to project name
+}
+
+task(hello) << {
+    println github.repository
+    println github.user
+    println github.license
+    println github.licenseName
+    println github.licenseUrl
+    println github.repositoryUrl
+    println github.issues
+    println github.site
+    println github.vcsUrl
+    println github.scmConnection
+    println github.changelogFile
+}
+
+
+
+
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.21'
+    compile group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.21'
+    compile group: 'log4j', name: 'log4j', version: '1.2.16'
+
+}
+
+bintray {
+
+    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : 'bintray_user'
+    key = project.hasProperty('bintrayKey') ? project.property('bintrayKey') : 'bintray_key'
+
+    publications = ['nebula']
+    publish = true
+    dryRun = !project.hasProperty('bintrayNoDryRun')
+
+    pkg {
+        repo = 'iThroneLab'
+        name = project.name
+        userOrg = 'thronelab'
+        desc = description
+        websiteUrl = github.site
+        issueTrackerUrl = github.issues
+        vcsUrl = github.vcsUrl
+        licenses = ['Apache-2.0']
+        labels = ['thronelab', 'gradle', 'template', 'java', 'release']
+        publicDownloadNumbers = true
+        githubRepo = github.user + '/' + github.repository //Optional Github repository
+        githubReleaseNotesFile = 'README.md' //Optional Github readme file
+        version.gpg.sign = true
+        version.released  = new Date()
+    }
+}
+
+nebulaRelease {
+    addReleaseBranchPattern(/\d+\.\d+\.\d+/)
+    addReleaseBranchPattern('HEAD')
+}
+
+if (project.hasProperty('release.useLastTag')) {
+    tasks.prepare.enabled = false
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
+
+build.dependsOn jacocoTestReport
+
+tasks.withType(JavaCompile) {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+findbugs {
+    ignoreFailures true
+    toolVersion = '3.0.1'
+    effort = 'max'
+    reportLevel = 'low'
+    sourceSets = [sourceSets.main]
+}
+
+findbugsMain {
+    reports {
+        html.enabled = false // Findbugs can only have on report enabled
+        xml.enabled = true
+    }
+}
