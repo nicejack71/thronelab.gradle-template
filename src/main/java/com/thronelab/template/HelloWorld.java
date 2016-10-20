@@ -19,6 +19,7 @@ public class HelloWorld {
    * @param args the arguments
    */
   public static void main(String[] args) {
+
     LOGGER.info("Hello World");
   }
 }
