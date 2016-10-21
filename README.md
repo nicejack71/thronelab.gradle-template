@@ -3,7 +3,7 @@
 [![Download](https://api.bintray.com/packages/thronelab/iThroneLab/thronelab.gradle-template/images/download.svg) ](https://bintray.com/thronelab/iThroneLab/thronelab.gradle-template/_latestVersion)
 [![Build Status](https://travis-ci.org/iThroneLab/thronelab.gradle-template.svg?branch=master)](https://travis-ci.org/iThroneLab/thronelab.gradle-template)
 [![Quality Gate](http://sonar.aldeso.com:88/api/badges/gate?key=com.thronelab.thronelab.gradle-template&blinking=true)](http://sonar.aldeso.com:88/dashboard/index/com.thronelab.thronelab.gradle-template)
-
+[![codecov](https://codecov.io/gh/ReneNeubert/thronelab.gradle-template/branch/master/graph/badge.svg)](https://codecov.io/gh/ReneNeubert/thronelab.gradle-template)
 
 A template for java projects with gradle.
 
