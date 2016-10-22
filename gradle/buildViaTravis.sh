@@ -8,14 +8,10 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
   ./gradlew -Prelease.useLastTag=true build --info
 elif [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_TAG" == "" ]; then
   echo -e 'Build Branch with Snapshot => Branch ['$TRAVIS_BRANCH']'
-  ./gradlew -Prelease.travisci=true -PbintrayUser="${bintrayUser}" -PbintrayKey="${bintrayKey}" build snapshot --info;
-	 sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.issuesReport.console.enable=true  -Dsonar.host.url=https://sonar.aldeso.com -Dsonar.jacoco.reportPath=build/jacoco/test.exec -Dsonar.projectVersion=$TRAVIS_BRANCH
-
+  ./gradlew -Prelease.travisci=true -PbintrayUser="${bintrayUser}" -PbintrayKey="${bintrayKey}" build snapshot --info
  elif [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_TAG" != "" ]; then
   echo -e 'Build Branch for Release => Branch ['$TRAVIS_BRANCH']  Tag ['$TRAVIS_TAG']'
-  ./gradlew -Prelease.travisci=true -Prelease.useLastTag=true -PbintrayUser="${bintrayUser}" -PbintrayKey="${bintrayKey}" -PbintrayNoDryRun final --info;
-	 sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.issuesReport.console.enable=true  -Dsonar.host.url=https://sonar.aldeso.com -Dsonar.jacoco.reportPath=build/jacoco/test.exec -Dsonar.projectVersion=$TRAVIS_BRANCH
-
+  ./gradlew -Prelease.travisci=true -Prelease.useLastTag=true -PbintrayUser="${bintrayUser}" -PbintrayKey="${bintrayKey}" -PbintrayNoDryRun final --info
 else
   echo -e 'WARN: Should not be here => Branch ['$TRAVIS_BRANCH']  Tag ['$TRAVIS_TAG']  Pull Request ['$TRAVIS_PULL_REQUEST']'
   ./gradlew -Prelease.useLastTag=true build --stacktrace
