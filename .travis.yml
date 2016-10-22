@@ -27,7 +27,7 @@ env:
 
 script:
   - gradle/buildViaTravis.sh
-  - gradle/sonar.sh
+  #- gradle/sonar.sh
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
