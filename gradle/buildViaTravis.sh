@@ -5,7 +5,7 @@ git fsck --full
 
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
   echo -e "Build Pull Request #$TRAVIS_PULL_REQUEST => Branch [$TRAVIS_BRANCH]"
-  ./gradlew -Prelease.useLastTag=true -Dsonar.login=$SONAR_TOKEN -Dsonar.projectVersion=$TRAVIS_BRANCH -Dsonar.analysis.mode=preview -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST -Dsonar.github.oauth=$GITHUB_ACCESS_TOKEN -Dsonar.github.endpoint="https://api.github.com/ReneNeubert" build sonarqube --info
+  ./gradlew -Prelease.useLastTag=true -Dsonar.login=$SONAR_TOKEN -Dsonar.projectVersion=$TRAVIS_BRANCH -Dsonar.analysis.mode=preview -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST -Dsonar.github.oauth=$GITHUB_ACCESS_TOKEN -Dsonar.github.endpoint=https://api.github.com/ReneNeubert build sonarqube --info
 elif [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_TAG" == "" ]; then
   echo -e 'Build Branch with Snapshot => Branch ['$TRAVIS_BRANCH']'
   ./gradlew -Prelease.travisci=true -PbintrayUser="${bintrayUser}" -PbintrayKey="${bintrayKey}" -Dsonar.login=$SONAR_TOKEN -Dsonar.projectVersion=$TRAVIS_BRANCH build snapshot sonarqube --info
