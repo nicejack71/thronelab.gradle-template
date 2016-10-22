@@ -1,7 +1,7 @@
 #!/bin/bash
 set -ev
 
-if [ "${TRAVIS_PULL_REQUEST}" != "false" ]; then
+if [ "${TRAVIS_PULL_REQUEST}" == "false" ]; then
     sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.host.url=https://sonar.aldeso.com -Dsonar.projectVersion=$TRAVIS_BRANCH -Dsonar.analysis.mode=preview -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST -Dsonar.github.oauth=$GITHUB_ACCESS_TOKEN
 
 fi
