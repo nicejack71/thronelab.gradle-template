@@ -3,7 +3,5 @@ set -ev
 
 if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
       # ./gradlew jacocoTestReport --info
-	 ./gradlew sonarqube  -Dsonar.issuesReport.console.enable=true -Dsonar.projectVersion=$TRAVIS_BRANCH --debug
+	 sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.issuesReport.console.enable=true -Dsonar.projectVersion=$TRAVIS_BRANCH
 fi
-
-#-Dsonar.login=$SONAR_TOKEN
