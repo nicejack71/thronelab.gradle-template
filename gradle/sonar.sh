@@ -2,7 +2,7 @@
 set -ev
 
 if [ "${TRAVIS_PULL_REQUEST}" != "false" ]; then
-    ./gradlew sonarqube -Dsonar.login=$SONAR_TOKEN -Dsonar.host.url=https://sonar.aldeso.com -Dsonar.projectVersion=$TRAVIS_BRANCH -Dsonar.analysis.mode=preview -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST -Dsonar.github.repository=$TRAVIS_REPO_SLUG  -Dsonar.github.oauth=b3487da26b4450e968420ed0c819105ca58d908f
+    ./gradlew sonarqube -Dsonar.login=$SONAR_TOKEN -Dsonar.host.url=https://sonar.aldeso.com -Dsonar.projectVersion=$TRAVIS_BRANCH -Dsonar.analysis.mode=preview -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST -Dsonar.github.repository=$TRAVIS_REPO_SLUG  -Dsonar.github.oauth=$GITHUB_TOKEN
 
 fi
 #
