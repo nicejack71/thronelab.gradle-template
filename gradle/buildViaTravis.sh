@@ -5,8 +5,8 @@ git fsck --full
 
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
   echo -e "Build Pull Request #$TRAVIS_PULL_REQUEST => Branch [$TRAVIS_BRANCH]"
-  ./gradlew -Prelease.useLastTag=true build --info;
-   sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.host.url=https://sonar.aldeso.com -Dsonar.projectVersion=$TRAVIS_BRANCH -Dsonar.analysis.mode=preview -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST -Dsonar.github.oauth=$GITHUB_ACCESS_TOKEN
+  ./gradlew -Prelease.useLastTag=true build --info
+   #- sonar-scanner -Dsonar.login=$SONAR_TOKEN -Dsonar.host.url=https://sonar.aldeso.com -Dsonar.projectVersion=$TRAVIS_BRANCH -Dsonar.analysis.mode=preview -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST -Dsonar.github.oauth=$GITHUB_ACCESS_TOKEN
 
 elif [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_TAG" == "" ]; then
   echo -e 'Build Branch with Snapshot => Branch ['$TRAVIS_BRANCH']'
