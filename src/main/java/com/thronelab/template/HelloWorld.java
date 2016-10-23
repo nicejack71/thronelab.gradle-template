@@ -38,7 +38,7 @@ public class HelloWorld {
 
 
 	public void setName(String name) {
-
+		System.out.println("Hello");
 		this.name = name;
 	}
 }
