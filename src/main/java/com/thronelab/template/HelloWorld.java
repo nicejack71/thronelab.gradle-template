@@ -31,7 +31,7 @@ public class HelloWorld {
 
 
 	public String getName() {
-
+System.out.println(name);
 		return name;
 	}
 
