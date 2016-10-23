@@ -9,17 +9,36 @@ import org.slf4j.LoggerFactory;
  */
 public class HelloWorld {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(HelloWorld.class);
 
-  private HelloWorld() {
-    throw new IllegalAccessError();
-  }
+	private static final Logger LOGGER = LoggerFactory.getLogger(HelloWorld.class);
 
-  /**
-   * @param args the arguments
-   */
-  public static void main(String[] args) {
+	private String name;
 
-    LOGGER.info("Hello World");
-  }
+
+	private HelloWorld() {
+
+		throw new IllegalAccessError();
+	}
+
+
+	/**
+	 * @param args the arguments
+	 */
+	public static void main(String[] args) {
+
+		LOGGER.info("Hello World");
+		HelloWorld helloWorld = new HelloWorld();
+	}
+
+
+	public String getName() {
+
+		return name;
+	}
+
+
+	public void setName(String name) {
+
+		this.name = name;
+	}
 }

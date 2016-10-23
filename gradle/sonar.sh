@@ -1,8 +1,25 @@
 #!/bin/bash
-set -ev
 
-if [ "${TRAVIS_PULL_REQUEST}" != "false" ]; then
-    ./gradlew sonarqube -Dsonar.login=$SONAR_TOKEN -Dsonar.host.url=https://sonar.aldeso.com -Dsonar.projectVersion=$TRAVIS_BRANCH -Dsonar.analysis.mode=preview -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST -Dsonar.github.repository=$TRAVIS_REPO_SLUG  -Dsonar.github.oauth=$GITHUB_TOKEN
+set -euo pipefail
+
+function strongEcho {
+  echo ""
+  echo "================ $1 ================="
+}
+
+
+if [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ "$TRAVIS_SECURE_ENV_VARS" == "true" ]; then
+	strongEcho 'Build and analyze pull request'
+
+	echo '======= no deploy'
+
+    ./gradlew build check sonarqube \
+      -Dsonar.analysis.mode=issues \
+      -Dsonar.github.pullRequest=$TRAVIS_PULL_REQUEST \
+      -Dsonar.github.repository=$TRAVIS_REPO_SLUG \
+      -Dsonar.github.oauth=$GITHUB_TOKEN \
+      -Dsonar.host.url=https://sonar.aldeso.com \
+      -Dsonar.login=$SONAR_TOKEN
 
 fi
 #
