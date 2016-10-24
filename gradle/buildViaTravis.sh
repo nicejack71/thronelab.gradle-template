@@ -28,7 +28,7 @@ elif [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_TAG" == "" ]; then
   	./gradlew build snapshot sonarqube \
   		-Prelease.travisci=true \
   		-PbintrayUser="${BINTRAY_USER}" \
-  		-PbintrayKey="${BINTRAY_KEY}" \
+  		-PbintrayKey=$BINTRAY_KEY \
   		-Dsonar.host.url=$SONAR_HOST_URL \
   		-Dsonar.login=$SONAR_TOKEN \
   		-Dsonar.projectVersion=$TRAVIS_BRANCH
