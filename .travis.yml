@@ -21,9 +21,9 @@ install: true
 
 #addons:
 #  sonarqube: true
-#env:
-#  global:
-#    - secure: $SONAR_TOKEN
+env:
+  global:
+    - secure: $SONAR_TOKEN
 
 script:
   - gradle/buildViaTravis.sh
