@@ -27,8 +27,6 @@ elif [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_TAG" == "" ]; then
 
   	./gradlew build snapshot sonarqube \
   		-Prelease.travisci=true \
-  		-PbintrayUser="${BINTRAY_USER}" \
-  		-PbintrayKey=$BINTRAY_KEY \
   		-Dsonar.host.url=$SONAR_HOST_URL \
   		-Dsonar.login=$SONAR_TOKEN \
   		-Dsonar.projectVersion=$TRAVIS_BRANCH
@@ -39,8 +37,6 @@ elif [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_TAG" != "" ]; then
 	./gradlew final sonarqube \
   		-Prelease.travisci=true \
   		-Prelease.useLastTag=true \
-  		-PbintrayUser="${BINTRAY_USER}" \
-  		-PbintrayKey=$BINTRAY_KEY \
   		-PbintrayNoDryRun \
   		-Dsonar.host.url=$SONAR_HOST_URL \
   		-Dsonar.login=$SONAR_TOKEN \
@@ -50,3 +46,5 @@ else
   echo -e 'WARN: Should not be here => Branch ['$TRAVIS_BRANCH']  Tag ['$TRAVIS_TAG']  Pull Request ['$TRAVIS_PULL_REQUEST']'
   	./gradlew -Prelease.useLastTag=true build --stacktrace
 fi
+#-PbintrayUser="${BINTRAY_USER}" \
+#  		-PbintrayKey=$BINTRAY_KEY \
