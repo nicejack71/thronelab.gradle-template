@@ -21,6 +21,7 @@ plugins {
 
 group = 'com.thronelab'
 description = 'Template for the thronelab projects.'
+
 github {
     user 'iThroneLab'
     license 'Apache'
@@ -44,10 +45,8 @@ dependencies {
 
 bintray {
 
-   user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : 'bintray_user'
-    key = project.hasProperty('bintrayKey') ? project.property('bintrayKey') : 'bintray_key'
-  //  user = System.getenv('bintrayUser')
-  //  key = System.getenv('bintrayKey')
+   user = project.hasProperty('BINTRAY_USER') ? System.getenv('BINTRAY_USER') : 'BINTRAY_USER'
+    key = project.hasProperty('BINTRAY_KEY') ? System.getenv('BINTRAY_KEY') : 'BINTRAY_KEY'
 
     publications = ['nebula']
     publish = true
@@ -68,6 +67,7 @@ bintray {
         githubReleaseNotesFile = 'README.md' //Optional Github readme file
         version.gpg.sign = true
         version.released  = new Date()
+        configurations = ['archives']
     }
 }
 

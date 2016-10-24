@@ -33,9 +33,6 @@ elif [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_TAG" == "" ]; then
   -Dsonar.login=$SONAR_TOKEN \
   -Dsonar.projectVersion=$TRAVIS_BRANCH
 
-
-
-
 elif [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_TAG" != "" ]; then
   strongEcho 'Build Branch for Release => Branch ['$TRAVIS_BRANCH']  Tag ['$TRAVIS_TAG']'
   ./gradlew final sonarqube \

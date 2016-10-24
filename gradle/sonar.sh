@@ -19,7 +19,8 @@ if [ "$TRAVIS_PULL_REQUEST" != "false" ] && [ "$TRAVIS_SECURE_ENV_VARS" == "true
       -Dsonar.github.repository=$TRAVIS_REPO_SLUG \
       -Dsonar.github.oauth=$GITHUB_TOKEN \
       -Dsonar.host.url=https://sonar.aldeso.com \
-      -Dsonar.login=$SONAR_TOKEN
+      -Dsonar.login=$SONAR_TOKEN \
+      -Prelease.useLastTag=true
 
 elif [ "$TRAVIS_PULL_REQUEST" == "false" ] && [ "$TRAVIS_TAG" == "" ]; then
   strongEcho 'Build Branch with Snapshot => Branch ['$TRAVIS_BRANCH']'
