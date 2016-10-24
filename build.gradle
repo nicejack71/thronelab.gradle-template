@@ -47,7 +47,7 @@ bintray {
 
     //user = project.hasProperty('BINTRAY_USER') ? project.property('BINTRAY_USER') : 'BINTRAY_USER'
     user = System.getenv("BINTRAY_USER")
-    key = 'e364b4212817d9e7c7fd01014ae10e56a8282fe5'
+    key = System.getenv("BINTRAY_KEY") //'e364b4212817d9e7c7fd01014ae10e56a8282fe5'
 
 
     publications = ['nebula']
