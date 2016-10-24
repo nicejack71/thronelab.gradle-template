@@ -46,8 +46,8 @@ dependencies {
 bintray {
 
     //user = project.hasProperty('BINTRAY_USER') ? project.property('BINTRAY_USER') : 'BINTRAY_USER'
-    user = System.getenv("BINTRAY_USER") //'nicejack'
-    key = System.getenv("BINTRAY_Key")
+    user = System.getenv("BINTRAY_USER")?: project.bintrayUser
+    key = System.getenv("BINTRAY_Key")?:project.bintrayKey
 
 
     publications = ['nebula']
