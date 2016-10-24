@@ -48,7 +48,7 @@ bintray {
     //user = project.hasProperty('BINTRAY_USER') ? project.property('BINTRAY_USER') : 'BINTRAY_USER'
     user = 'nicejack'
     key = project.hasProperty('BINTRAY_KEY') ? project.property('BINTRAY_KEY') : 'BINTRAY_KEY'
-    println project.property('BINTRAY_KEY')
+   
 
 
     publications = ['nebula']
