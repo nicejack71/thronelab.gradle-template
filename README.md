@@ -5,7 +5,7 @@
 [![Quality Gate](https://sonar.aldeso.com/api/badges/gate?key=com.thronelab:thronelab.gradle-template)](https://sonar.aldeso.com/dashboard/index/com.thronelab.thronelab.gradle-template)
 [![codecov](https://codecov.io/gh/iThroneLab/thronelab.gradle-template/branch/master/graph/badge.svg)](https://codecov.io/gh/iThroneLab/thronelab.gradle-template)
 [![Quality Gate](https://sonar.aldeso.com/api/badges/gate?key=com.thronelab:thronelab.gradle-template)](https://sonar.aldeso.com/dashboard/index/com.thronelab:thronelab.gradle-template)
-
+[![Quality Gate](https://sonar.aldeso.com/api/badges/gate?key=com.thronelab:thronelab.gradle-template&metric=bugs&blinking=true )](https://sonar.aldeso.com/dashboard/index/com.thronelab:thronelab.gradle-template)
 A template for java projects with gradle.
 
 
