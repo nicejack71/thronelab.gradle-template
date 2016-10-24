@@ -45,8 +45,8 @@ dependencies {
 
 bintray {
 
-   user = project.hasProperty('BINTRAY_USER') ? System.getenv('BINTRAY_USER') : 'BINTRAY_USER'
-    key = project.hasProperty('BINTRAY_KEY') ? System.getenv('BINTRAY_KEY') : 'BINTRAY_KEY'
+    user = project.hasProperty('BINTRAY_USER') ? project.property('BINTRAY_USER') : 'BINTRAY_USER'
+    key = project.hasProperty('BINTRAY_KEY') ? project.property('BINTRAY_KEY') : 'BINTRAY_KEY'
 
     publications = ['nebula']
     publish = true
@@ -66,7 +66,7 @@ bintray {
         githubRepo = github.user + '/' + github.repository //Optional Github repository
         githubReleaseNotesFile = 'README.md' //Optional Github readme file
         version.gpg.sign = true
-        version.released  = new Date()
+        version.released = new Date()
         configurations = ['archives']
     }
 }
