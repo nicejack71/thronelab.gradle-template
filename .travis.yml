@@ -19,15 +19,15 @@ git:
 # prevent travis running gradle assemble; let the build script do it anyway
 install: true
 
-addons:
-  sonarqube: true
-env:
-  global:
-    - secure: $SONAR_TOKEN
+#addons:
+#  sonarqube: true
+#env:
+#  global:
+#    - secure: $SONAR_TOKEN
 
 script:
   - gradle/buildViaTravis.sh
-  - gradle/sonar.sh
+ # - gradle/sonar.sh
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
