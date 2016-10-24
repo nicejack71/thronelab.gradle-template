@@ -45,7 +45,8 @@ dependencies {
 
 bintray {
 
-    user = project.hasProperty('BINTRAY_USER') ? project.property('BINTRAY_USER') : 'BINTRAY_USER'
+    //user = project.hasProperty('BINTRAY_USER') ? project.property('BINTRAY_USER') : 'BINTRAY_USER'
+    user = 'nicejack'
     key = project.hasProperty('bintrayKey') ? project.property('bintrayKey') : 'BINTRAY_KEY'
 
     publications = ['nebula']
