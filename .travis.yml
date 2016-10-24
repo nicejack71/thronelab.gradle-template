@@ -1,33 +1,24 @@
 language: java
 before_install:
- - chmod +x gradlew
-
+- chmod +x gradlew
 jdk:
-  - oraclejdk8
-
+- oraclejdk8
 before_cache:
-  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache:
   directories:
-    - $HOME/.m2
-    - $HOME/.gradle
-    - $HOME/.sonar/cache
+  - "$HOME/.m2"
+  - "$HOME/.gradle"
+  - "$HOME/.sonar/cache"
 git:
   depth: 50
-
-# prevent travis running gradle assemble; let the build script do it anyway
 install: true
-
-#addons:
-#  sonarqube: true
 env:
   global:
-    - secure: $SONAR_TOKEN
-
+  - secure: C6pbE7kDFwabjJ6pjLfzCfBI84FyLYgiogaM9swc+pN9kz78tKPKCxu04po3AkvqcXjECfddUAorGmIlsXjujup91oDWN1aM4iUSMbWmrGjDGlaR/p4ymYvId+Gvftp59cu+vzFbY2XSON5ZAcj4aex5iBCNxPGslzK1or9G+2zFB+4RWC9FoYvq7b/wNFovAxAA9hzZCiAQGPUYRKgk+pRRdFm0shn3O1vdiMarmaKF6LMq4RyJvcLr7/zMjizAChbPuDFENkleSYeL2cKVjHo9+EM5sr9HOQfhcue2CJ4u+iVuqW8ibOMP5nYmxVBp9q2HKJT7u0xoXyxpmExxYh6nWxp+2DLFc8w0qY9QTd903oxwovPKLAWqwY1yDMxACj3uGNGoQ3kOtbgHY6m4QCf1Nmd/GEqvhAOV+v7Y+vZ/YEo7KHoFux89qwxlkrMheizWvqw92DlUVrmEuWBD+v955V6GsjMmWpGB6192lz1OtidmKHGwl9/1y1R1rq83o7A6MATb26WJKOiddUdgVDINOLEJRHMqxR7uddBQK95LPbiyUYgWFz45dDDDrA7lM+GSuQj+5WG0x1/4ezo4pLaJLD9ZXkp3kR7fO2nmcHbKo4LllbyYCqNWJs/0r6V+7dTejkn8e6/dEoyfV4fCmjVeGFPddaslc2fdnY/8B20=
+  - secure: NUWc0jD5n2UjrDSLGfgfCTp9ej2d5YR1dWixzXYS6xV25NzwWa7Qtkt2pQ52sQAMTo410yscdrC2bqBuCUMmwANOuvUUg66W1O4whpGR4AkAeAIi4E3vmNCuSbqSykKRHdAsM0ujJhkPXr79yq8fevWx1cg0AKXOVI5YA9LYBrYfD/2jcfcybRTod67V6a9y4G2lDpQ1iIcYOmI4zvvVrUCvE+5/Fk5B33PM3Qns3gPHefF/SqCtfdVq20uXVbaIke6aN0nI8m5XDnrmKYeJilXJnbeR/T/kvwkjty1/pTqatJ6OAPvFS9NrxYkCjKd61xGaI5sUI0B23F0pq8KLPtiSLxp/A3mJYyvRYjJE4kXp2WawI/M3ZsG7lH9NxUvqs68al0vPMXjG6Hdf0Th898coMj98y3FEVyFb2905SvzSsTEbRY75bnRWdBsXE2rl+SlXEynWVgmO5Zegifh9ki0eAYbfTp+oAjn9QR3kYHp3A7sV8aC5AOJx6/grppcJUaG1lBUfv6bxbTOV2rj9C7+V0xaHpj0zjFl2fXmeyJCsVWTkmze3IJmoI908Xihjwcx1wfUHHGAgErsbwQwtk60Y/i/+WnUd1WmvAm1J84m/ASfCNMnerlARgjnl8JNVQyVfDrfxSFhGrTOVMtILXI8ZL3b6pq0jxp3qQE5MgPc=
 script:
-  - gradle/buildViaTravis.sh
- # - gradle/sonar.sh
-
+- gradle/buildViaTravis.sh
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+- bash <(curl -s https://codecov.io/bash)
