@@ -44,8 +44,10 @@ dependencies {
 
 bintray {
 
-    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : 'bintray_user'
-    key = project.hasProperty('bintrayKey') ? project.property('bintrayKey') : 'bintray_key'
+//    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : 'bintray_user'
+//    key = project.hasProperty('bintrayKey') ? project.property('bintrayKey') : 'bintray_key'
+    user = System.getenv('bintrayUser')
+    key = System.getenv('bintrayKey')
 
     publications = ['nebula']
     publish = true
